@@ -131,7 +131,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
 
     int fd = open(tmp_path, O_CREAT | O_WRONLY | O_TRUNC, 0644);
     if (fd < 0) { free(full); return -1; }
-    write(fd, full, full_len);
+    if (write(fd, full, full_len) < 0) { free(full); close(fd); return -1; }
 
     // Step 7: fsync and rename
     fsync(fd);
