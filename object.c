@@ -181,7 +181,7 @@ int object_read(const ObjectID *id, ObjectType *type_out, void **data_out, size_
     fseek(f, 0, SEEK_SET);
     uint8_t *full = malloc(full_len);
     if (!full) { fclose(f); return -1; }
-    fread(full, 1, full_len, f);
+    if (fread(full, 1, full_len, f) != full_len) { free(full); fclose(f); return -1; }
     fclose(f);
 
     // Step 3: Verify integrity
