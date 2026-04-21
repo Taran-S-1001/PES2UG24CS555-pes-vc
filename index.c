@@ -176,6 +176,7 @@ int index_save(const Index *index) {
     if (!f) return -1;
 
     // Sort entries by path before saving
+    // Heap allocate to avoid stack overflow (Index struct is ~6MB)
     Index *sorted = malloc(sizeof(Index));
     if (!sorted) { fclose(f); return -1; }
     *sorted = *index;
