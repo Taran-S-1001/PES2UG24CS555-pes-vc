@@ -130,6 +130,9 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 //
 // Returns 0 on success, -1 on error.
 // Helper: recursively build a tree from a slice of index entries at a given depth
+
+// Recursively builds a tree object for each directory level in the index
+// Files at this level are added directly; subdirectories are recursed into
 static int write_tree_level(IndexEntry *entries, int count, int depth, ObjectID *id_out) {
     Tree tree;
     tree.count = 0;
