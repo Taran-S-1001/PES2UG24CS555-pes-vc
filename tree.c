@@ -202,6 +202,7 @@ static int write_tree_level(IndexEntry *entries, int count, int depth, ObjectID 
     return ret;
 }
 
+// Loads the index and builds a complete tree hierarchy from staged files
 int tree_from_index(ObjectID *id_out) {
     Index idx;
     if (index_load(&idx) != 0) return -1;
