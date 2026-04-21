@@ -185,7 +185,7 @@ int index_save(const Index *index) {
     for (int i = 0; i < sorted->count; i++) {
         IndexEntry *e = &sorted->entries[i];
         hash_to_hex(&e->hash, hex);
-        fprintf(f, "%o %s %lu %u %s\n",
+        fprintf(f, "%o %s %lu %u %s\n", // Use %lu for uint64_t mtime_sec and %u for uint32_t size
                 e->mode, hex, e->mtime_sec, e->size, e->path);
     }
 
