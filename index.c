@@ -219,6 +219,7 @@ int index_add(Index *index, const char *path) {
 
     // Write blob to object store
     ObjectID id;
+    // Store file contents as a blob object, get back its hash
     if (object_write(OBJ_BLOB, data, len, &id) != 0) { free(data); return -1; }
     free(data);
 
