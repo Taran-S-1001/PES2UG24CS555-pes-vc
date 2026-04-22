@@ -17,4 +17,9 @@ test_tree
 .vscode/
 .idea/
 
-
+file1.txt
+file2.txt
+hello.txt
+bye.txt
+.gdb_history
+peda-session-*.txt
