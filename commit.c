@@ -198,6 +198,7 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
     Commit commit;
     memset(&commit, 0, sizeof(commit));
 
+    // Snapshot the staged index as a tree object, not the working directory
     if (tree_from_index(&commit.tree) != 0) {
         fprintf(stderr, "error: failed to build tree from index\n");
         return -1;
