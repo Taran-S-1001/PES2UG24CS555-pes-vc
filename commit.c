@@ -205,6 +205,7 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
 
     // Step 2: Read parent commit from HEAD (may not exist for first commit)
     ObjectID parent_id;
+    // First commit has no parent; subsequent commits link to HEAD
     if (head_read(&parent_id) == 0) {
         commit.has_parent = 1;
         commit.parent = parent_id;
